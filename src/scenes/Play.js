@@ -9,12 +9,12 @@ class Play extends Phaser.Scene {
         this.load.image('bg', './assets/bg.png');
 
         
-        this.load.spritesheet('explosion', './assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
+        this.load.spritesheet('kaboom', './assets/kaboom.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
     }
+    
 
     create() {
 
-        
         this.bg = this.add.tileSprite(0, 0, 640, 480, 'bg').setOrigin(0, 0);
 
 
@@ -42,7 +42,7 @@ class Play extends Phaser.Scene {
 
         this.anims.create({
             key: 'explode',
-            frames: this.anims.generateFrameNumbers('explosion', { start: 0, end: 9, first: 0}),
+            frames: this.anims.generateFrameNumbers('kaboom', { start: 0, end: 9, first: 0}),
             frameRate: 30
         });
 
@@ -64,6 +64,7 @@ class Play extends Phaser.Scene {
         }
         this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig);
 
+
         this.gameOver = false;
 
         scoreConfig.fixedWidth = 0;
@@ -72,6 +73,18 @@ class Play extends Phaser.Scene {
             this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← to Menu', scoreConfig).setOrigin(0.5);
             this.gameOver = true;
         }, null, this);
+
+        //let timeLeft = 60
+        //function countDown() {
+        //    setInterval(function(){
+        //        if(timeLeft <= 0){
+        //            clearInterval(timeLeft=0)
+        //        }
+        //        timeLeftDisplay.innerHTML= timeLeft
+        //        timeLeft += 1
+        //    }, 1000);
+        //}
+
     }
 
     update() {
@@ -124,7 +137,7 @@ class Play extends Phaser.Scene {
 
         ship.alpha = 0;                         
 
-        let boom = this.add.sprite(ship.x, ship.y, 'explosion').setOrigin(0, 0);
+        let boom = this.add.sprite(ship.x, ship.y, 'kaboom').setOrigin(0, 0);
         boom.anims.play('explode');            
         boom.on('animationcomplete', () => {   
             ship.reset();                       
@@ -137,4 +150,6 @@ class Play extends Phaser.Scene {
         
         this.sound.play('sfx_explosion');
     }
+
+    
 }

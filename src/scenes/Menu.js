@@ -40,9 +40,6 @@ class Menu extends Phaser.Scene {
             fixedWidth: 0
         }
 
-        
-        
-
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding - 32, 'C a k e y  💜  C a k e y', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2 + 120, 'Use ←→ arrows to move & (F) to fire', titleConfig).setOrigin(0.5);
         menuConfig.backgroundColor = '#00FF00';

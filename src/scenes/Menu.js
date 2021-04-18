@@ -15,10 +15,10 @@ class Menu extends Phaser.Scene {
     create() {
 
         let titleConfig = {
-            fontFamily: 'Cursive',
-            fontSize: '30px',
-            backgroundColor: '#C5BBFF',
-            color: '#843605',
+            fontFamily: 'Couier New',
+            fontSize: '20px',
+            
+            color: '#8AF9D4',
             align: 'right',
             padding: {
                 top: 5,
@@ -28,10 +28,10 @@ class Menu extends Phaser.Scene {
         }
 
         let menuConfig = {
-            fontFamily: 'Courier New',
-            fontSize: '20px',
+            fontFamily: 'Cursive',
+            fontSize: '40px',
             backgroundColor: '#C5BBFF',
-            color: '#843605',
+            color: '#843BA7',
             align: 'right',
             padding: {
                 top: 5,
@@ -43,11 +43,11 @@ class Menu extends Phaser.Scene {
         
         
 
-        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding - 32, 'Cakey Cakey', titleConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2, 'Use ←→ arrows to move & (F) to fire', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding - 32, 'C a k e y  💜  C a k e y', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2 + 120, 'Use ←→ arrows to move & (F) to fire', titleConfig).setOrigin(0.5);
         menuConfig.backgroundColor = '#00FF00';
         menuConfig.color = '#000';
-        this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding + 32, 'Press ← for Novice or → for Expert', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding + 128, 'Press ← for Novice or → for Expert', titleConfig).setOrigin(0.5);
 
 
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);

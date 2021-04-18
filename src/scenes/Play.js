@@ -4,9 +4,9 @@ class Play extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('rocket', './assets/rocket.png');
+        this.load.image('plate', './assets/plate.png');
         this.load.image('cake', './assets/cake.png');
-        this.load.image('starfield', './assets/starfield.png');
+        this.load.image('bg', './assets/bg.png');
 
         
         this.load.spritesheet('explosion', './assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
@@ -15,7 +15,7 @@ class Play extends Phaser.Scene {
     create() {
 
         
-        this.starfield = this.add.tileSprite(0, 0, 640, 480, 'starfield').setOrigin(0, 0);
+        this.bg = this.add.tileSprite(0, 0, 640, 480, 'bg').setOrigin(0, 0);
 
 
         this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0xD3FAFF).setOrigin(0, 0);
@@ -26,7 +26,7 @@ class Play extends Phaser.Scene {
         this.add.rectangle(game.config.width - borderUISize, 0, borderUISize, game.config.height, 0xffc0ca).setOrigin(0 ,0);
 
 
-        this.p1Rocket = new Rocket(this, game.config.width/2, game.config.height - borderUISize - borderPadding, 'rocket').setOrigin(0.5, 0);
+        this.p1Rocket = new Rocket(this, game.config.width/2, game.config.height - borderUISize - borderPadding, 'plate').setOrigin(0.5, 0);
 
 
         this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4, 'cake', 0, 30).setOrigin(0, 0);
@@ -51,7 +51,7 @@ class Play extends Phaser.Scene {
 
 
         let scoreConfig = {
-            fontFamily: 'Courier',
+            fontFamily: 'Courier New',
             fontSize: '28px',
             backgroundColor: '#C5BBFF',
             color: '#843605',
@@ -85,7 +85,7 @@ class Play extends Phaser.Scene {
             this.scene.start("menuScene");
         }
 
-        this.starfield.tilePositionX -= 4;
+        this.bg.tilePositionX -= 4;
 
         if(!this.gameOver) {
             this.p1Rocket.update(); 
@@ -108,12 +108,12 @@ class Play extends Phaser.Scene {
         }
     }
 
-    checkCollision(rocket, ship) {
+    checkCollision(plate, ship) {
 
-        if (rocket.x < ship.x + ship.width && 
-            rocket.x + rocket.width > ship.x && 
-            rocket.y < ship.y + ship.height &&
-            rocket.height + rocket.y > ship. y) {
+        if (plate.x < ship.x + ship.width && 
+            plate.x + plate.width > ship.x && 
+            plate.y < ship.y + ship.height &&
+            plate.height + plate.y > ship. y) {
                 return true;
         } else {
             return false;

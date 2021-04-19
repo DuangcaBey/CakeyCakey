@@ -14,6 +14,8 @@ class Menu extends Phaser.Scene {
 
     create() {
 
+      
+
       let bgm = this.sound.add('sfx_bgm');
 
         let titleConfig = {

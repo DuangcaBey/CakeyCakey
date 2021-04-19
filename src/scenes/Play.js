@@ -10,10 +10,13 @@ class Play extends Phaser.Scene {
 
         
         this.load.spritesheet('kaboom', './assets/kaboom.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
+        this.load.spritesheet('kaboom_1', './assets/kaboom_1.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
     }
-    
+
 
     create() {
+
+        
 
         this.bg = this.add.tileSprite(0, 0, 640, 480, 'bg').setOrigin(0, 0);
 
@@ -40,9 +43,10 @@ class Play extends Phaser.Scene {
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
 
 
+
         this.anims.create({
             key: 'explode',
-            frames: this.anims.generateFrameNumbers('kaboom', { start: 0, end: 9, first: 0}),
+            frames: this.anims.generateFrameNumbers('kaboom_1', { start: 0, end: 9, first: 0}),
             frameRate: 30
         });
 
@@ -74,16 +78,7 @@ class Play extends Phaser.Scene {
             this.gameOver = true;
         }, null, this);
 
-        //let timeLeft = 60
-        //function countDown() {
-        //    setInterval(function(){
-        //        if(timeLeft <= 0){
-        //            clearInterval(timeLeft=0)
-        //        }
-        //        timeLeftDisplay.innerHTML= timeLeft
-        //        timeLeft += 1
-        //    }, 1000);
-        //}
+        
 
     }
 
@@ -119,6 +114,8 @@ class Play extends Phaser.Scene {
             this.p1Rocket.reset();
             this.shipExplode(this.ship01);
         }
+
+        
     }
 
     checkCollision(plate, ship) {
@@ -137,7 +134,7 @@ class Play extends Phaser.Scene {
 
         ship.alpha = 0;                         
 
-        let boom = this.add.sprite(ship.x, ship.y, 'kaboom').setOrigin(0, 0);
+        let boom = this.add.sprite(ship.x, ship.y, 'kaboom_1').setOrigin(0, 0);
         boom.anims.play('explode');            
         boom.on('animationcomplete', () => {   
             ship.reset();                       

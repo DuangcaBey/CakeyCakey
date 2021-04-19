@@ -1,7 +1,6 @@
 class Menu extends Phaser.Scene {
     constructor() {
         super("menuScene");
-        //this.sfxBGM = scene.sound.add('sfx_bgm', './assets/bgm.wav');
     }
 
     preload() {
@@ -9,10 +8,13 @@ class Menu extends Phaser.Scene {
         this.load.audio('sfx_select', './assets/select.wav');
         this.load.audio('sfx_explosion', './assets/shooo.wav');
         this.load.audio('sfx_rocket', './assets/pop.wav');
+        this.load.audio('sfx_bgm', './assets/bgm.wav');
 
     }
 
     create() {
+
+      let bgm = this.sound.add('sfx_bgm');
 
         let titleConfig = {
             fontFamily: 'Couier New',
@@ -50,6 +52,8 @@ class Menu extends Phaser.Scene {
 
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+
+        bgm.play();
     }
 
     update() {
@@ -60,7 +64,6 @@ class Menu extends Phaser.Scene {
             gameTimer: 60000    
           }
           this.sound.play('sfx_select');
-          //this.sfxBGM.play();
           this.scene.start("playScene");    
         }
         if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
@@ -70,7 +73,6 @@ class Menu extends Phaser.Scene {
             gameTimer: 45000    
           }
           this.sound.play('sfx_select');
-          //this.sfxBGM.play();
           this.scene.start("playScene");    
         }
       }

@@ -5,7 +5,7 @@ class Play extends Phaser.Scene {
 
     preload() {
         this.load.image('plate', './assets/plate.png');
-        this.load.image('plate', './assets/plate_p2.png');
+        this.load.image('plate_p2', './assets/plate_p2.png');
         this.load.image('cake', './assets/cake.png');
         this.load.image('bg', './assets/bg.png');
 
@@ -77,8 +77,8 @@ class Play extends Phaser.Scene {
 
         
 
-        this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig);
-        this.scoreRight = this.add.text(borderUISize + borderPadding + 455, borderUISize + borderPadding*2, this.p2Score, scoreConfig);
+        this.scoreLeft = this.add.text(borderUISize + borderPadding + 455, borderUISize + borderPadding*2, this.p1Score, scoreConfig);
+        this.scoreRight = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p2Score, scoreConfig);
 
 
         this.gameOver = false;
@@ -117,28 +117,28 @@ class Play extends Phaser.Scene {
 
         if(this.checkCollision(this.p1Rocket, this.ship03)) {
             this.p1Rocket.reset();
-            this.shipExplode(this.ship03);
+            this.shipExplodep1(this.ship03);
         }
         if (this.checkCollision(this.p1Rocket, this.ship02)) {
             this.p1Rocket.reset();
-            this.shipExplode(this.ship02);
+            this.shipExplodep1(this.ship02);
         }
         if (this.checkCollision(this.p1Rocket, this.ship01)) {
             this.p1Rocket.reset();
-            this.shipExplode(this.ship01);
+            this.shipExplodep1(this.ship01);
         } 
 
         if(this.checkCollision(this.p2Rocket, this.ship03)) {
             this.p2Rocket.reset();
-            this.shipExplode(this.ship03);
+            this.shipExplodep2(this.ship03);
         }
         if (this.checkCollision(this.p2Rocket, this.ship02)) {
             this.p2Rocket.reset();
-            this.shipExplode(this.ship02);
+            this.shipExplodep2(this.ship02);
         }
         if (this.checkCollision(this.p2Rocket, this.ship01)) {
             this.p2Rocket.reset();
-            this.shipExplode(this.ship01);
+            this.shipExplodep2(this.ship01);
         } 
 
         
@@ -169,7 +169,7 @@ class Play extends Phaser.Scene {
         
     }
 
-    shipExplode(ship) {
+    shipExplodep1(ship) {
 
         ship.alpha = 0;                         
 
@@ -183,11 +183,26 @@ class Play extends Phaser.Scene {
 
         this.p1Score += ship.points;
         this.scoreLeft.text = this.p1Score; 
+        
+        this.sound.play('sfx_explosion');
+    }
+
+    shipExplodep2(ship) {
+
+        ship.alpha = 0;                         
+
+        let boom = this.add.sprite(ship.x, ship.y, 'kaboom_1').setOrigin(0, 0);
+        boom.anims.play('explode');            
+        boom.on('animationcomplete', () => {   
+            ship.reset();                       
+            ship.alpha = 1;                    
+            boom.destroy();                     
+        });
+
         this.p2Score += ship.points;
         this.scoreRight.text = this.p2Score;
         
         this.sound.play('sfx_explosion');
     }
-
     
 }

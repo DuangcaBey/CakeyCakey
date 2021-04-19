@@ -44,20 +44,18 @@ class Menu extends Phaser.Scene {
         }
 
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding - 32, 'C a k e y  💜  C a k e y', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2 + 120, 'Use ←→ arrows to move & ⬆ to fire', titleConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2 + 120, 'Use ←(A)→(D) arrows to move & ⬆(W) to fire', titleConfig).setOrigin(0.5);
         menuConfig.backgroundColor = '#00FF00';
         menuConfig.color = '#000';
         this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding + 128, 'Press ← for Novice or → for Expert', titleConfig).setOrigin(0.5);
 
-
+        //keys
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
         keyUP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
-
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-
 
         bgm.play();
     }

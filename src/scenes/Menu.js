@@ -1,7 +1,7 @@
 class Menu extends Phaser.Scene {
     constructor() {
         super("menuScene");
-        //this.sfxBGM = scene.sound.add('sfx_bgm', './assets/bgm.mp3');
+        //this.sfxBGM = scene.sound.add('sfx_bgm', './assets/bgm.wav');
     }
 
     preload() {
@@ -32,12 +32,13 @@ class Menu extends Phaser.Scene {
             fontSize: '40px',
             backgroundColor: '#C5BBFF',
             color: '#843BA7',
-            align: 'right',
+            align: 'center',
             padding: {
                 top: 5,
                 bottom: 5,
             },
-            fixedWidth: 0
+            fixedWidth: 500,
+            fixedHeight: 65,
         }
 
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding - 32, 'C a k e y  💜  C a k e y', menuConfig).setOrigin(0.5);
@@ -73,4 +74,5 @@ class Menu extends Phaser.Scene {
           this.scene.start("playScene");    
         }
       }
+    
 }

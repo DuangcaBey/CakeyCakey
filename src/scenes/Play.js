@@ -8,6 +8,7 @@ class Play extends Phaser.Scene {
         this.load.image('plate_p2', './assets/plate_p2.png');
         this.load.image('cake', './assets/cake.png');
         this.load.image('bg', './assets/bg.png');
+        //this.load.image('vborder', './assets/border.png');
 
         
         this.load.spritesheet('kaboom', './assets/kaboom.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
@@ -15,9 +16,7 @@ class Play extends Phaser.Scene {
     }
 
 
-    create() {
-
-        
+    create() {        
 
         this.bg = this.add.tileSprite(0, 0, 640, 480, 'bg').setOrigin(0, 0);
 

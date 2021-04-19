@@ -5,6 +5,7 @@ class Menu extends Phaser.Scene {
 
     preload() {
 
+        this.load.image('mbg', './assets/menubg.png');
         this.load.audio('sfx_select', './assets/select.wav');
         this.load.audio('sfx_explosion', './assets/shooo.wav');
         this.load.audio('sfx_rocket', './assets/pop.wav');
@@ -14,7 +15,7 @@ class Menu extends Phaser.Scene {
 
     create() {
 
-      
+      this.bg = this.add.image(0, 0, 640, 480, 'mbg').setOrigin(0,0); 
 
       let bgm = this.sound.add('sfx_bgm');
 
@@ -60,6 +61,8 @@ class Menu extends Phaser.Scene {
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
 
         bgm.play();
+
+        
     }
 
     update() {

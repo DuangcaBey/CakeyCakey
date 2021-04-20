@@ -8,7 +8,7 @@ class Play extends Phaser.Scene {
         this.load.image('plate_p2', './assets/plate_p2.png');
         this.load.image('cake', './assets/cake.png');
         this.load.image('bg', './assets/bg.png');
-        //this.load.image('vborder', './assets/border.png');
+        this.load.image('mbg', './assets/menubg.png');
 
         
         this.load.spritesheet('kaboom', './assets/kaboom.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
@@ -23,10 +23,14 @@ class Play extends Phaser.Scene {
 
         this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0xD3FAFF).setOrigin(0, 0);
 
-        this.add.rectangle(0, 0, game.config.width, borderUISize, 0xffc0ca).setOrigin(0 ,0);
-        this.add.rectangle(0, game.config.height - borderUISize, game.config.width, borderUISize, 0xffc0ca).setOrigin(0 ,0);
-        this.add.rectangle(0, 0, borderUISize, game.config.height, 0xffc0ca).setOrigin(0 ,0);
-        this.add.rectangle(game.config.width - borderUISize, 0, borderUISize, game.config.height, 0xffc0ca).setOrigin(0 ,0);
+        //this.add.rectangle(0, 0, game.config.width, borderUISize, 0xffc0ca).setOrigin(0 ,0);
+        this.menubg = this.add.tileSprite(0, 0, game.config.width, borderUISize, 'mbg').setOrigin(0, 0);
+        //this.add.rectangle(0, game.config.height - borderUISize, game.config.width, borderUISize, 0xffc0ca).setOrigin(0 ,0);
+        this.menubg = this.add.tileSprite(0, game.config.height - borderUISize, game.config.width, borderUISize, 'mbg').setOrigin(0, 0);
+        //this.add.rectangle(0, 0, borderUISize, game.config.height, 0xffc0ca).setOrigin(0 ,0);
+        this.menubg = this.add.tileSprite(0, 0, borderUISize, game.config.height, 'mbg').setOrigin(0, 0);
+        //this.add.rectangle(game.config.width - borderUISize, 0, borderUISize, game.config.height, 0xffc0ca).setOrigin(0 ,0);
+        this.menubg = this.add.tileSprite(game.config.width - borderUISize, 0, borderUISize, game.config.height, 'mbg').setOrigin(0, 0);
 
 
         

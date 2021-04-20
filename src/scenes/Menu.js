@@ -15,15 +15,14 @@ class Menu extends Phaser.Scene {
 
     create() {
 
-      this.bg = this.add.image(0, 0, 640, 480, 'mbg').setOrigin(0,0); 
+      this.bg = this.add.tileSprite(0, 0, 640, 480, 'mbg').setOrigin(0, 0);
 
       let bgm = this.sound.add('sfx_bgm');
 
         let titleConfig = {
             fontFamily: 'Couier New',
             fontSize: '20px',
-            
-            color: '#8AF9D4',
+            color: '#FF6100',
             align: 'right',
             padding: {
                 top: 5,
@@ -45,12 +44,6 @@ class Menu extends Phaser.Scene {
             fixedWidth: 500,
             fixedHeight: 65,
         }
-
-        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding - 32, 'C a k e y  💜  C a k e y', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2 + 120, 'Use ←(A)→(D) arrows to move & ⬆(W) to fire', titleConfig).setOrigin(0.5);
-        menuConfig.backgroundColor = '#00FF00';
-        menuConfig.color = '#000';
-        this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding + 128, 'Press ← for Novice or → for Expert', titleConfig).setOrigin(0.5);
 
         //keys
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);

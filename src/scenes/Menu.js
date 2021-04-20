@@ -17,7 +17,7 @@ class Menu extends Phaser.Scene {
 
       this.bg = this.add.tileSprite(0, 0, 640, 480, 'mbg').setOrigin(0, 0);
 
-      //NoahJ
+      //help from Noah Jiang
       let bgm = this.sound.add('sfx_bgm');
 
         let titleConfig = {
